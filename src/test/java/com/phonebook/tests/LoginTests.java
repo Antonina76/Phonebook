@@ -1,10 +1,13 @@
 package com.phonebook.tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CreateAccountTests extends TestBase {
+
+public class LoginTests extends TestBase {
+
     @BeforeMethod
     public void ensurePrecondition(){
         if(!isLoginLinkPresent()){
@@ -13,11 +16,18 @@ public class CreateAccountTests extends TestBase {
     }
 
     @Test
-    public void registerExistedUserNegativeTest() {
-
+    public void loginRegisteredUserPositiveTest(){
         clickOnLoginLink();
         fillLoginRegisterForm(new User().setEmail("mail@ap-d.com").setPassword("Manuel1234$"));
-        clickOnRegistrationButton();
+        //click on Login button
+        clickOnLoginButton();
+        Assert.assertTrue(isElementPresent(By.cssSelector("button")));
+    }
+    @Test
+    public void loginRegisteredUserNegativeTestWithoutEmail(){
+        clickOnLoginLink();
+        fillLoginRegisterForm(new User().setPassword("Manuel1234$"));
+        clickOnLoginButton();
         Assert.assertTrue(isAlertPresent());
     }
 
