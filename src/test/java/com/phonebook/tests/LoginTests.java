@@ -1,6 +1,7 @@
 package com.phonebook.tests;
 
 import com.phonebook.models.User;
+import com.utils.UserData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -19,7 +20,7 @@ public class LoginTests extends TestBase {
     @Test
     public void loginRegisteredUserPositiveTest(){
         app.getUser().clickOnLoginLink();
-        app.getUser().fillLoginRegisterForm(new User().setEmail("mail@ap-d.com").setPassword("Manuel1234$"));
+        app.getUser().fillLoginRegisterForm(new User().setEmail(UserData.EMAIL).setPassword(UserData.PASSWORD));
         //click on Login button
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isElementPresent(By.cssSelector("button")));
@@ -27,7 +28,7 @@ public class LoginTests extends TestBase {
     @Test
     public void loginRegisteredUserNegativeTestWithoutEmail(){
         app.getUser().clickOnLoginLink();
-        app.getUser().fillLoginRegisterForm(new User().setPassword("Manuel1234$"));
+        app.getUser().fillLoginRegisterForm(new User().setPassword(UserData.PASSWORD));
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isAlertPresent());
     }

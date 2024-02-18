@@ -1,7 +1,9 @@
 package com.phonebook.tests;
 import com.phonebook.models.Contact;
 import com.phonebook.models.User;
+import com.utils.ContactData;
 import com.utils.DataProviders;
+import com.utils.UserData;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,7 +22,7 @@ public class AddNewContactTests extends TestBase {
 
         app.getUser().clickOnLoginLink();
 
-        app.getUser().fillLoginRegisterForm(new User().setEmail("mail@ap-d.com").setPassword("Manuel1234$"));
+        app.getUser().fillLoginRegisterForm(new User().setEmail(UserData.EMAIL).setPassword(UserData.PASSWORD));
         //click on Registration button
         app.getUser().clickOnLoginButton();
     }
@@ -31,15 +33,15 @@ public class AddNewContactTests extends TestBase {
 
         app.getContact().clickOnAddLink();
         //Enter name
-        app.getContact().fillContactForm(new Contact().setName("Karl")
-                .setLastName("Adam")
-                .setPhone("1234567890")
-                .setEmail("adam@gm.com")
-                .setAdress("Berlin")
-                .setDeskription("goalkeeper"));
+        app.getContact().fillContactForm(new Contact().setName(ContactData.NAME)
+                .setLastName(ContactData.LASTNAME)
+                .setPhone(ContactData.PHONE)
+                .setEmail(ContactData.EMAIL)
+                .setAdress(ContactData.ADDRESS)
+                .setDeskription(ContactData.DESC));
         app.getContact().clickOnSaveButton();
         //assert contact is added by text
-        Assert.assertTrue(app.getContact().isContactCreated("Karl"));
+        Assert.assertTrue(app.getContact().isContactCreated(ContactData.NAME));
     }
 
     @Test(dataProvider = "addNewContact",dataProviderClass = DataProviders.class)
