@@ -54,6 +54,14 @@ public class Contact {
         return email;
     }
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+
     public String getAdress() {
         return adress;
     }
