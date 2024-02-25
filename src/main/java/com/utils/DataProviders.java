@@ -15,7 +15,7 @@ public class DataProviders {
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact1.csv")));
         String line =  reader.readLine();
         while (line !=null) {
-            String[] split = line.split(" , ");
+            String[] split = line.split(",");
             list.add(new Object[]{new Contact().setName(split[0]).setLastName(split[1]).setPhone(split[2]).setEmail(split[3]).setAdress(split[4]).setDeskription(split[5])});
             line = reader.readLine();
         }
@@ -23,7 +23,7 @@ public class DataProviders {
     }
     @DataProvider
     public Iterator<Object[]> addNewContact(){
-        List<Object[]> list=new ArrayList<>();
+        List<Object[]>list=new ArrayList<>();
         list.add(new Object[]{"Markus1","Gross","1234567891","mark@xp.com","Arnheim","goalkeeper"});
         list.add(new Object[]{"Markus2","Gross","1234567895","mark@xp.com","Arnheim","goalkeeper"});
         list.add(new Object[]{"Markus3","Gross","1234567896","mark@xp.com","Arnheim","goalkeeper"});

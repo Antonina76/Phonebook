@@ -49,15 +49,15 @@ public class AddNewContactTests extends TestBase {
 
         app.getContact().clickOnAddLink();
         app.getContact().fillContactForm(new Contact()
-                .setName(name)
-                .setLastName(lastName)
-                .setPhone(phone)
-                .setEmail(email)
-                .setAdress(adress)
-                .setDeskription(desc));
+                .setName(ContactData.NAME)
+                .setLastName(ContactData.LASTNAME)
+                .setPhone(ContactData.PHONE)
+                .setEmail(ContactData.EMAIL)
+                .setAdress(ContactData.ADDRESS)
+                .setDeskription(ContactData.DESC));
         app.getContact().clickOnSaveButton();
         //assert contact is added by text
-        Assert.assertTrue(app.getContact().isContactCreated(name));
+        Assert.assertTrue(app.getContact().isContactCreated(ContactData.NAME));
     }
 
     @Test(dataProvider = "addNewContactFromCSV",dataProviderClass = DataProviders.class )
